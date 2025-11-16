@@ -1,13 +1,33 @@
-# Infra AWS com Terraform
+# Infra AWS Terraform
 
-Projeto inicial de IaC usando Terraform para provisionamento na AWS.
+Este repositório contém módulos Terraform para provisionamento de infraestrutura na AWS.  
+O objetivo é criar uma **infra modular, versionável e escalável**.
 
-## Pré-requisitos
-- Terraform instalado
-- Conta AWS configurada (quando você criar)
-  
+## Estrutura do repositório
+
+- `modules/` - módulos reutilizáveis (networking, compute)
+- `environments/` - configurações específicas por ambiente (dev, prod)
+- `examples/` - exemplos de uso dos módulos
+- `.gitignore` - mantém o repositório limpo
+
+## Módulos
+
+### Networking
+- Cria: VPC, Subnets, Security Groups
+- Variáveis: `vpc_cidr`, `subnet_cidrs`, `environment`
+- Outputs: `vpc_id`, `subnet_ids`
+
+### Compute
+- Cria: EC2 instances
+- Variáveis: `ami`, `instance_type`, `environment`
+- Outputs: `instance_ids`, `public_ips`
+
 ## Como usar
-```sh
+
+Exemplo para ambiente dev:
+
+```bash
+cd environments/dev
 terraform init
 terraform plan
 terraform apply
